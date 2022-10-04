@@ -4,50 +4,59 @@ public class Radio {
     public int currentRadio;
     public int currentVolume;
 
-
-    public void setToMaxRadio() { // Максимальная радиостанция
-        currentRadio = 9;
-    }
-
-    public void increaseRadio() { // Переключение радиостанции на 1
+    public void next() {
         if (currentRadio < 9) {
-            currentRadio = currentRadio + 1;
+            currentRadio++;
+        } else {
+            currentRadio = 0;
         }
     }
 
-    public void nextRadio() { // Следующая после 9
-        if (currentRadio > 9) {
-            currentRadio = currentRadio;
-        }
-    }
-
-    public void setCurrentRadio(int newCurrentRadio) { // выставление канала
-        currentRadio = newCurrentRadio;
-        if (newCurrentRadio > 9) {
+    public void prev() {
+        if (currentRadio > 0) {
+            currentRadio--;
+        } else {
             currentRadio = 9;
         }
     }
 
-    public void setToMaxVolume() { // Максимальная громкость
-        currentVolume = 10;
+    public int getCurrentRadio() {
+        return currentRadio;
     }
 
-    public void increaseVolume() { // Увеличение громкости
+    public void setCurrentRadio(int currentRadio) {
+        if (currentRadio < 0) {
+            return;
+        }
+        if (currentRadio > 9) {
+            return;
+        }
+        this.currentRadio = currentRadio;
+    }
+
+    public int getCurrentVolume() {
+        return currentVolume;
+    }
+
+    public void increaseVolume() {
         if (currentVolume < 10) {
             currentVolume = currentVolume + 1;
         }
     }
 
-    public void nextVolume() { //
-        if (currentVolume > 10) {
-            currentVolume = 10;
+    public void decreaseVolume() {
+        if (currentVolume > 0) {
+            currentVolume = currentVolume - 1;
         }
     }
 
-    public void setCurrentVolume(int newCurrentVolume) { //
-        currentVolume = newCurrentVolume;
-        if (newCurrentVolume > 10) {
-            currentVolume = 10;
+    public void setCurrentVolume(int currentVolume) {
+        if (currentVolume < 0) {
+            return;
         }
+        if (currentVolume > 10) {
+            return;
+        }
+        this.currentVolume = currentVolume;
     }
 }
